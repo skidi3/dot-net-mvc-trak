@@ -1,0 +1,96 @@
+using System;
+
+namespace ConsoleApp4
+{
+    public interface Person
+    {
+        public void setDetails();
+        public Person getDetails();
+    }
+    public class Employee: Person
+    {
+        private string fname, lname, dept;
+        public void setDetails()
+        {
+            Console.WriteLine("Enter Firstname:");
+            fname = Console.ReadLine();
+            Console.WriteLine("Enter Lastname:");
+            lname = Console.ReadLine();
+            Console.WriteLine("Enter Department:");
+            dept = Console.ReadLine();
+        }
+        public Person getDetails()
+        {
+            return this;
+        }
+    }
+    public class Trainer : Person
+    {
+        private string fname, lname, dept;
+        public void setDetails()
+        {
+            Console.WriteLine("Enter Firstname:");
+            fname = Console.ReadLine();
+            Console.WriteLine("Enter Lastname:");
+            lname = Console.ReadLine();
+            Console.WriteLine("Enter Department:");
+            dept = Console.ReadLine();
+        }
+        public Person getDetails()
+        {
+            return this;
+        }
+    }
+    public class Worker : Person
+    {
+        private string fname, lname, dept;
+        public void setDetails()
+        {
+            Console.WriteLine("Enter Firstname:");
+            fname = Console.ReadLine();
+            Console.WriteLine("Enter Lastname:");
+            lname = Console.ReadLine();
+            Console.WriteLine("Enter Department:");
+            dept = Console.ReadLine();
+        }
+        public Person getDetails()
+        {
+            return this;
+        }
+    }
+
+    public class Salary
+    {
+        public void calcSalary(Person person)
+        {
+            if (person is Employee)
+            {
+                Console.WriteLine("Salary of Employee");
+            }
+            else if(person is Trainer) 
+            {
+                Console.WriteLine("Salary of Trainer");
+            }
+            else
+            {
+                Console.WriteLine("Salary of Worker");
+            }
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Person emp = new Employee();
+            emp.setDetails();
+            Person trainer = new Trainer();
+            trainer.setDetails();
+            Person worker = new Worker();
+            worker.setDetails();
+            Salary salary = new Salary();
+            salary.calcSalary(emp.getDetails());
+            salary.calcSalary(trainer.getDetails());
+            salary.calcSalary(worker.getDetails());
+        }
+    }
+}

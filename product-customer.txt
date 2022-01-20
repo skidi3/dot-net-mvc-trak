@@ -1,0 +1,99 @@
+using System;
+using Products;
+
+namespace ConsoleApp1
+{
+    public class Product
+    {
+        public string product_name;
+        public int product_price;
+        public int product_quantity;
+
+        public Product(string name, int price, int quant)
+        {
+            product_name = name;
+            product_price = price;
+            product_quantity = quant;
+        }
+    }
+
+    public class Customer
+    {
+        public string customer_name;
+        public string customer_address;
+        public string customer_number;
+        public int total_products;
+        public Product[] products; //Init prod array
+
+        public Customer(string name, string addr, string number, int prod)
+        {
+            customer_name = name;
+            customer_address = addr;
+            customer_number = number;
+            products = new Product[prod];
+            total_products = 0;
+        }
+
+        public void addProduct(Product p)
+        {
+            products[total_products++] = p;
+        }
+
+        public void showCustomer()
+        {
+            //Display cust details with products 
+            Console.WriteLine("Customer Name:" + customer_name);
+            Console.WriteLine("Customer Address:" + customer_address);
+            Console.WriteLine("Customer ContactNumber:" + customer_number);
+
+            for (int num = 0; num < total_products; num++)
+            {
+                Console.WriteLine("Product Name:" + products[num].product_name);
+                Console.WriteLine("Product Price:" + products[num].product_price);
+                Console.WriteLine("Product Quantity:" + products[num].product_quantity);
+            }
+        }
+    }
+
+
+    internal class Sales
+    {
+        static void Main(string[] args)
+        {
+            //Input details
+
+            Console.WriteLine("Enter Name:");
+            string customer_name = Console.ReadLine();
+
+            Console.WriteLine("Enter Address:");
+            string customer_address = Console.ReadLine();
+
+            Console.WriteLine("Enter Phone Number:");
+            string customer_number = Console.ReadLine();
+
+            Console.WriteLine("Enter total no of products:");
+            int total_products = Convert.ToInt32(Console.ReadLine());
+
+            Customer c = new Customer(customer_name, customer_address, customer_number, total_products);
+
+            for (int i = 0; i < total_products; i++)
+            {
+               
+                Console.WriteLine("Enter Product Name:");
+                string product_name = Console.ReadLine();
+
+                Console.WriteLine("Enter Product Price:");
+                int product_price = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("Enter Product Quantity:");
+                int product_quantity = Convert.ToInt32(Console.ReadLine());
+
+                Product prod = new Product(product_name, product_price, product_quantity);
+
+                c.addProduct(prod);
+            }
+
+            c.showCustomer();
+        }
+    }
+}
