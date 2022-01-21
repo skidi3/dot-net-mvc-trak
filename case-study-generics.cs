@@ -1,28 +1,29 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 
 
 namespace TrainingJan21
 {
 
-    class ProductInformation<T>
+    class ProductInformation<T, E>
     {
         T[] product_name;
-        T[] product_type;
+        E[] product_type;
         int product_size;
         public ProductInformation(int product_size)
         {
             this.product_size = product_size;
             product_name = new T[product_size];
-            product_type = new T[product_size];
+            product_type = new E[product_size];
         }       
         public void addProduct(T name, int position)
         {
             product_name[position] = name;
         }
-        public void addProductDetails(T name, int position)
+        public void addProductDetails(E type, int position)
         {
-            product_type[position] = name;
+            product_type[position] = type;
         }
         public void printProductDetails()
         {
@@ -42,7 +43,7 @@ namespace TrainingJan21
     {
         static void Main(string[] args)
         {
-            ProductInformation<string> p = new ProductInformation<string>(3);
+            ProductInformation<string, string> p = new ProductInformation<string, string>(3);
             p.addProduct("product-1", 0);
             p.addProduct("product-2", 1);
             p.addProduct("product-3", 2);
