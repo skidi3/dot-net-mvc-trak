@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+using System.Collections;
+
+namespace ConsoleApp1
+{
+    public class Items
+    {
+        string item_name;
+        float item_price;
+
+        public Items(string name, float price)
+        {
+            this.item_name = name;
+            this.item_price = price;
+        }
+        public String ItemName { get => item_name; set => item_name = value; }
+        public float Price { get => item_price; set => item_price = value; }
+
+        public override string ToString()
+        {
+            return $"Name: {this.item_name} ,Price: {this.item_price}";
+        }
+    }
+
+    internal class Program
+
+    {
+        static void Main(string[] args)
+        {
+            ArrayList item_list = new ArrayList();
+            Stack<Items> item_stack = new Stack<Items>();
+
+            item_list.Add(new Items("Item1", 31f));
+            item_list.Add(new Items("Item2", 62f));
+            item_list.Add(new Items("Item3", 80f));
+
+            Console.WriteLine("Item Details(ArrayList):");
+            foreach (var i in item_list)
+            {
+                Console.WriteLine(i.ToString());
+            }
+
+            item_stack.Push(new Items("Item4", 60f));
+            item_stack.Push(new Items("Item5", 70f));
+            item_stack.Push(new Items("Item6", 80f));
+
+            Console.WriteLine("Item Details(Stack):");
+            foreach (var x in item_stack)
+            {
+                Console.WriteLine(x.ToString());
+            }
+            Console.ReadLine();
+        }
+    }
+
+}
